@@ -22,8 +22,6 @@ var bio = {
     "picture" : "images/fry.jpg"
 };
 
-
-
 $("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
 
 $("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
