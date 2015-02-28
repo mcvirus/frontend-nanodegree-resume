@@ -31,32 +31,80 @@ $("#header").append(HTMLWelcomeMsg.replace("%data%", bio.welcomeMsg))
     .append(HTMLskills.replace("%data%", bio.skills[1]))
     .append(HTMLskills.replace("%data%", bio.skills[2]));
 
-var work = {};
-work.title = "system administrator";
-work.employer = "goverment";
-work.dates = "2005-2015";
-work.location = "localhost";
+var work = {
+    "places": [
+        {
+            "title": "system administrator",
+            "employer": "goverment",
+            "dates": "2010-future",
+            "location": "localhost",
+            "description": "Updates job knowledge by tracking emerging Internet technologies;" +
+            " participating in educational opportunities; reading professional publications;" +
+            " maintaining personal networks; participating in professional organizations."
+        },
+        {
+            "title": "system administrator",
+            "employer": "goverment",
+            "dates": "2005-2010",
+            "location": "localhost",
+            "description": "Accomplishes organization goals by accepting ownership for accomplishing" +
+            " new and different requests; exploring opportunities to add value to job accomplishments."
+        }
+    ]
+};
+var project = {
+    "description": [
+        {
+            "title": "Last Project",
+            "dates": "2015",
+            "description": "do something",
+            "image": "images/project2.jpg"
+        },
+        {
+            "title": "Project1",
+            "dates": "2014",
+            "description": "do nothing",
+            "image": "images/project.jpg"
+        }
+    ]
+};
+$("#projects").prepend(HTMLprojectStart)
+    .append(HTMLprojectTitle.replace("%data%", project.description[0].title))
+    .append(HTMLprojectDates.replace("%data%", project.description[0].dates))
+    .append(HTMLprojectDescription.replace("%data%", project.description[0].description))
+    .append(HTMLprojectImage.replace("%data%", project.description[0].image))
 
-$("#workExperience").append(HTMLworkStart);
-$("#workExperience").append(HTMLworkTitle.replace("%data%", work.title));
-$("#workExperience").append(HTMLworkEmployer.replace("%data%", work.employer));
-$("#workExperience").append(HTMLworkDates.replace("%data%", work.dates));
-$("#workExperience").append(HTMLworkLocation.replace("%data%", work.location));
+    .append(HTMLprojectTitle.replace("%data%", project.description[1].title))
+    .append(HTMLprojectDates.replace("%data%", project.description[1].dates))
+    .append(HTMLprojectDescription.replace("%data%", project.description[1].description))
+    .append(HTMLprojectImage.replace("%data%", project.description[1].image));
+$("#workExperience").append(HTMLworkStart)
 
+    .append(HTMLworkEmployer.replace("%data%", work.places[0].employer))
+    .append(HTMLworkTitle.replace("%data%", work.places[0].title))
+    .append(HTMLworkDates.replace("%data%", work.places[0].dates))
+    .append(HTMLworkLocation.replace("%data%", work.places[0].location))
+    .append(HTMLworkDescription.replace("%data%", work.places[0].description))
+
+    .append(HTMLworkEmployer.replace("%data%", work.places[1].employer))
+    .append(HTMLworkTitle.replace("%data%", work.places[1].title))
+    .append(HTMLworkDates.replace("%data%", work.places[1].dates))
+    .append(HTMLworkLocation.replace("%data%", work.places[1].location))
+    .append(HTMLworkDescription.replace("%data%", work.places[1].description));
 
 var education = {
     "schools": [
         {
             "name": "second-level school",
             "location": "Kyev",
-            "degree":"wizard",
+            "degree": "wizard",
             "majors": ["CS"],
             "dates": "2005"
         },
         {
             "name": "first-level school",
             "location": "Donetsk",
-            "degree":"master",
+            "degree": "master",
             "majors": ["CS"],
             "dates": "2000"
         }
@@ -64,8 +112,9 @@ var education = {
     "onlineClasses": [
         {
             "title": "JS Crash Course",
+            "school": "udacity",
             "dates": "2015",
-            "URL": "udacity.com"
+            "URL": "https://www.udacity.com/course/ud804"
         }
 
     ]
@@ -75,14 +124,9 @@ $("#education").prepend(HTMLschoolStart)
     .append(HTMLschoolLocation.replace("%data%", education.schools[0].location))
     .append(HTMLschoolDates.replace("%data%", education.schools[0].dates))
     .append(HTMLschoolDegree.replace("%data%", education.schools[0].degree))
+    .append(HTMLschoolMajor.replace("%data%", education.schools[0].majors))
 
-    .append(HTMLschoolMajor.replace("%data%", education.schools[0].majors));
-
-
-
-
-
-$("#education") .append(HTMLschoolName.replace("%data%", education.schools[1].name))
+    .append(HTMLschoolName.replace("%data%", education.schools[1].name))
     .append(HTMLschoolDegree.replace("%data%", education.schools[1].degree))
     .append(HTMLschoolDates.replace("%data%", education.schools[1].dates))
     .append(HTMLschoolLocation.replace("%data%", education.schools[1].location))
@@ -90,5 +134,6 @@ $("#education") .append(HTMLschoolName.replace("%data%", education.schools[1].na
 
 $("#education").append(HTMLonlineClasses)
     .append(HTMLonlineTitle.replace("%data%", education.onlineClasses[0].title))
+    .append(HTMLonlineSchool.replace("%data%", education.onlineClasses[0].school))
     .append(HTMLonlineDates.replace("%data%", education.onlineClasses[0].dates))
     .append(HTMLonlineURL.replace("%data%", education.onlineClasses[0].URL));
