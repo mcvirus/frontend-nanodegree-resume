@@ -187,7 +187,7 @@ function initializeMap() {
   If so, it creates a new map marker for that location.
   */
   function callback(results, status) {
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
+    if (status == google.maps.jobs.PlacesServiceStatus.OK) {
       createMapMarker(results[0]);
     }
   }
@@ -200,7 +200,7 @@ function initializeMap() {
 
     // creates a Google place search service object. PlacesService does the work of
     // actually searching for location data.
-    var service = new google.maps.places.PlacesService(map);
+    var service = new google.maps.jobs.PlacesService(map);
 
     // Iterates through the array of locations, creates a search object for each location
     for (var place in locations) {

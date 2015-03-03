@@ -69,7 +69,7 @@ The resume has four distinct sections: work, education, projects and a header wi
                  title: string 
                  location: string 
                  dates: string (works with a hyphen between them)
-                 description: string 
+                 projects: string
             display: function taking no parameters
 
 * `projects` contains:
@@ -77,7 +77,7 @@ The resume has four distinct sections: work, education, projects and a header wi
             projects: array of objects with
                   title: string 
                   dates: string (works with a hyphen between them)
-                  description: string
+                  projects: string
                   images: array with string urls
             display: function taking no parameters
 
