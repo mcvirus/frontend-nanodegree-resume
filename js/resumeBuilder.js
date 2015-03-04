@@ -33,7 +33,7 @@ if (bio.skills.length > 0) {
         .append(HTMLskills.replace("%data%", bio.skills[1]))
         .append(HTMLskills.replace("%data%", bio.skills[2]))
         .append(HTMLskills.replace("%data%", bio.skills[3]));
-};
+}
 
 
 var work = {
@@ -145,17 +145,6 @@ $("#education").append(HTMLonlineClasses)
     .append(HTMLonlineDates.replace("%data%", education.onlineClasses[0].dates))
     .append(HTMLonlineURL.replace("%data%", education.onlineClasses[0].URL));
 
-var weirdObject = {
-    "property": "Time for an astronomy lesson!",
-    "property1": "Cameron's minor in college was astronomy",
-    "property-2": "The 4 Galilean largest moons of Jupiter are:",
-    "property 3": "Io, Ganymede, Callisto, Europa",
-    "property$": "Saturn's moon Enceladus has liquid water ocean under its icy surface",
-    " property": "The Sun contains 99.87% of the mass of the entire solar system",
-    "property()": "There are 5 dwarf planets in our solar system:",
-    "property[]": "Pluto, Ceres, Eris, Haumea, Makemake",
-    "8property": "Mars has two tiny moons: Phobos and Deimos"
-};
 
 var obj = {
     "database.host": "127.0.0.1",
