@@ -57,19 +57,23 @@ var work = {
         }
     ]
 };
-$("#workExperience").append(HTMLworkStart);
 
- $(".work-entry").append(HTMLworkEmployer.replace("%data%", work.jobs[0].employer))
-    .append(HTMLworkTitle.replace("%data%", work.jobs[0].title))
-    .append(HTMLworkDates.replace("%data%", work.jobs[0].dates))
-    .append(HTMLworkLocation.replace("%data%", work.jobs[0].location))
-    .append(HTMLworkDescription.replace("%data%", work.jobs[0].description))
+for (var job in work.jobs) {
+    $("#workExperience").append(HTMLworkStart);
+    var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+    var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+    var formattedEmployerTitle = formattedEmployer + formattedTitle;
+    var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+    var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+    var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
 
-    .append(HTMLworkEmployer.replace("%data%", work.jobs[1].employer))
-    .append(HTMLworkTitle.replace("%data%", work.jobs[1].title))
-    .append(HTMLworkDates.replace("%data%", work.jobs[1].dates))
-    .append(HTMLworkLocation.replace("%data%", work.jobs[1].location))
-    .append(HTMLworkDescription.replace("%data%", work.jobs[1].description));
+    $(".work-entry:last")
+        .append(formattedEmployerTitle)
+        .append(formattedDates)
+        .append(formattedLocation)
+        .append(formattedDescription);
+
+}
 
 var project = {
     "projects": [
@@ -88,7 +92,7 @@ var project = {
     ]
 };
 $("#projects").prepend(HTMLprojectStart);
-  $(".project-entry").append(HTMLprojectTitle.replace("%data%", project.projects[0].title))
+$(".project-entry").append(HTMLprojectTitle.replace("%data%", project.projects[0].title))
     .append(HTMLprojectDates.replace("%data%", project.projects[0].dates))
     .append(HTMLprojectDescription.replace("%data%", project.projects[0].projects))
     .append(HTMLprojectImage.replace("%data%", project.projects[0].image[0]))
@@ -156,33 +160,36 @@ var obj = {
     "baseUrl": "test.com",
     "limit": 10
 };
-var database = {};
-function makeArray(str){
+var db = {};
+
+function makeArray(str) {
     var array = str.split(".");
     return array;
 }
+function MyDate() {
+    this.x = '77';
+    this.y = '88';
+    this.z = '99';
+    this.e = '00';
+}
 var z = [];
 
-for(var i in obj){
+var d = new MyDate();
+
+for (var i in obj) {
 
     var temp = makeArray(i);
+    if (temp.length > 1) {
 
-    if(temp.length > 1){
-       if(z[z.length -1] !=temp[0]){
-           var p =0;
-            z.push(temp[0]);
-        }
-        database[temp[0] + temp[p]]=(obj[i]);
-        p++;
-    }else{
-       database[i] = obj[i];
+    } else {
+        db[i] = obj[i];
     }
+}
+
+for (var i in db) {
+    console.log(i + " " + db[i]);
 
 }
 
-for(var i in database){
-   console.log(i + " " + database[i]);
-
-}
-console.log(database.toSource());
-console.log(z.toSource());
+//console.log(db.toSource());
+console.log(d.toSource());
