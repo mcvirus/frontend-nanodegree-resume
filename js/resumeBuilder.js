@@ -35,17 +35,17 @@ if (bio.skills.length > 0) {
         .append(HTMLskills.replace("%data%", bio.skills[3]));
 }
 
-
+$("#main").append(internationalizeButton);
 function inName(name){
 
     name = name.trim().split(" ");
     console.log(name);
     name[1] = name[1].toUpperCase();
-    name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(0).toLowerCase();
+    name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
     name = name.join(" ");
     return name;
-};
-$("#main").prepend(internationalizeButton);
+}
+
 var work = {
     "jobs": [
         {
