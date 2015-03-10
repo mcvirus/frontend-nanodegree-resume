@@ -177,6 +177,8 @@ $("#education").append(HTMLonlineClasses)
     .append(HTMLonlineURL.replace("%data%", education.onlineClasses[0].URL));
 
 
+$("#mapDiv:last").append(googleMap);
+
 var obj = {
     "database.host": "127.0.0.1",
     "database.user": "test",
