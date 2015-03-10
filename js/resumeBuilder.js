@@ -36,12 +36,12 @@ if (bio.skills.length > 0) {
 }
 
 $("#main").append(internationalizeButton);
-function inName(name){
+function inName(name) {
 
     name = name.trim().split(" ");
     console.log(name);
     name[1] = name[1].toUpperCase();
-    name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
+    name[0] = name[0].slice(0, 1).toUpperCase() + name[0].slice(1).toLowerCase();
     name = name.join(" ");
     return name;
 }
@@ -65,53 +65,70 @@ var work = {
             "description": "Accomplishes organization goals by accepting ownership for accomplishing" +
             " new and different requests; exploring opportunities to add value to job accomplishments."
         }
-    ]
+    ],
+    display: function () {
+        for (var job in work.jobs) {
+            $("#workExperience").append(HTMLworkStart);
+            var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+            var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+            var formattedEmployerTitle = formattedEmployer + formattedTitle;
+            var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+            var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+            var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+
+            $(".work-entry:last")
+                .append(formattedEmployerTitle)
+                .append(formattedDates)
+                .append(formattedLocation)
+                .append(formattedDescription);
+
+        }
+    }
 };
 
-for (var job in work.jobs) {
-    $("#workExperience").append(HTMLworkStart);
-    var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-    var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-    var formattedEmployerTitle = formattedEmployer + formattedTitle;
-    var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
-    var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
-    var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+work.display();
 
-    $(".work-entry:last")
-        .append(formattedEmployerTitle)
-        .append(formattedDates)
-        .append(formattedLocation)
-        .append(formattedDescription);
-
-}
-
-var project = {
-    "projects": [
+var projects = {
+    "project": [
         {
-            "title": "Last Project",
+            "title": "Last Panzer",
             "dates": "2015",
-            "projects": "do something",
-            "image": ["images/project2.jpg", "images/project.jpg"]
+            "description": "do something",
+            "images": ["images/project.jpg"]
         },
         {
-            "title": "Project1",
+            "title": "First panzer",
             "dates": "2014",
-            "projects": "do nothing",
-            "image": ["images/project.jpg"]
+            "description": "do nothing",
+            "images": ["images/project.jpg", "images/project2.jpg"]
         }
-    ]
-};
-$("#projects").prepend(HTMLprojectStart);
-$(".project-entry").append(HTMLprojectTitle.replace("%data%", project.projects[0].title))
-    .append(HTMLprojectDates.replace("%data%", project.projects[0].dates))
-    .append(HTMLprojectDescription.replace("%data%", project.projects[0].projects))
-    .append(HTMLprojectImage.replace("%data%", project.projects[0].image[0]))
-    .append(HTMLprojectImage.replace("%data%", project.projects[0].image[1]))
 
-    .append(HTMLprojectTitle.replace("%data%", project.projects[1].title))
-    .append(HTMLprojectDates.replace("%data%", project.projects[1].dates))
-    .append(HTMLprojectDescription.replace("%data%", project.projects[1].projects))
-    .append(HTMLprojectImage.replace("%data%", project.projects[1].image[0]));
+    ],
+    display: function () {
+
+        for (var i in this.project) {
+            $("#projects").append(HTMLprojectStart);
+            var formattedTitle = HTMLprojectTitle.replace("%data%", projects.project[i].title);
+            var formattedDates = HTMLprojectDates.replace("%data%", projects.project[i].dates);
+            var formattedDescription = HTMLprojectDescription.replace("%data%", projects.project[i].description);
+
+            $(".project-entry:last")
+                .append(formattedTitle)
+                .append(formattedDates)
+                .append(formattedDescription);
+            if (projects.project[i].images.length > 0) {
+                for (var image in projects.project[i].images) {
+                    var formattedImage = HTMLprojectImage.replace("%data%", projects.project[i].images[image]);
+                    $(".project-entry:last").append(formattedImage);
+                }
+            }
+        }
+
+
+    }
+
+};
+projects.display();
 
 var education = {
     "schools": [
@@ -241,9 +258,9 @@ var work = {
 // Your code goes here! Let me help you get started
 
 function locationizer(workObj) {
-  var locations = [];
-    for(var i in workObj.jobs){
-      locations.push(workObj.jobs[i].location);
+    var locations = [];
+    for (var i in workObj.jobs) {
+        locations.push(workObj.jobs[i].location);
         //console.log(workObj.jobs.location[i]);
     }
     return locations;
