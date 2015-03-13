@@ -179,22 +179,7 @@ $("#education").append(HTMLonlineClasses)
 
 $("#mapDiv:last").append(googleMap);
 
-var obj = {
-    "database.host": "127.0.0.1",
-    "database.user": "test",
-    "database.password": "qwerty",
-    "rest.photo.host": "127.0.0.2",
-    "rest.users.host": "127.0.0.3",
-    "rest.users.password": "p@ssw0rd",
-    "baseUrl": "test.com",
-    "limit": 10
-};
-var db = {};
 
-function makeArray(str) {
-    var array = str.split(".");
-    return array;
-}
 function MyDate() {
     this.x = '77';
     this.y = '88';
@@ -271,3 +256,42 @@ function locationizer(workObj) {
 // Did locationizer() work? This line will tell you!
 console.log(locationizer(work));
 
+var obj = {
+    "database.host": "127.0.0.1",
+    "database.user": "test",
+    "database.password": "qwerty",
+    "rest.photo.host": "127.0.0.2",
+    "rest.users.host": "127.0.0.3",
+    "rest.users.password": "p@ssw0rd",
+    "baseUrl": "test.com",
+    "limit": 10
+};
+var db = {};
+var tempArr = [];
+hr1();
+function hr1(){
+for (var i in obj) {
+    var arr = makeArray(i);
+    if(arr.length>1){
+        qaz(arr[0]);
+    }
+
+}
+}
+console.log(tempArr.toString());
+
+function makeObj(a, b) {
+    var tObj = new Object();
+    tObj[a] = b;
+    return tObj;
+}
+function qaz(p){
+    if(tempArr.indexOf(p) == -1){
+        tempArr.push(p);
+    }
+}
+
+function makeArray(str) {
+    var array = str.split(".");
+    return array;
+}
